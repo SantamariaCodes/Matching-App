@@ -23,29 +23,9 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     }
     
     var indexOFTheOneAndOnlyFaceUpCard : Int? {
-        get {
-            var faceUpCardIndicies = [Int]()
-            
-            for index in cards.indices {
-                if cards[index].isFaceUp {
-                    faceUpCardIndicies.append(index)
-                }
-            }
-            
-            if faceUpCardIndicies.count == 1 {
-                return faceUpCardIndicies.first
-            } else {
-                return nil
-            }
-        } set {
-            for index in cards.indices {
-                if index == newValue {
-                    cards[index].isFaceUp = true
-                } else {
-                    cards[index].isFaceUp = false
-                }
-            }
-        }
+        get { cards.indices.filter {index in cards[index].isFaceUp}.only }
+        
+        set { cards.indices.forEach{ cards[$0].isFaceUp = (newValue == $0)} }
     }
     
     
@@ -61,7 +41,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
                         cards[potentialMatchIndex].isMatched = true
                     }
                 } else {
-               
+                    
                     indexOFTheOneAndOnlyFaceUpCard = chosenIndex
                 }
                 cards[chosenIndex].isFaceUp = true
@@ -71,14 +51,12 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     }
     
     
-    
     mutating func shuffle() {
         cards.shuffle()
         print(cards)
     }
     
     struct Card : Equatable, Identifiable, CustomDebugStringConvertible {
-        
         
         var isFaceUp = false
         var isMatched = false
@@ -89,6 +67,12 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
             return " \(id) : \(content) \(isFaceUp ? "up" : "down") \(isMatched  ? "matched" : "")"
         }
         
-        
+    }
+    
+}
+
+extension Array {
+    var only: Element? {
+        count == 1 ? first : nil
     }
 }
