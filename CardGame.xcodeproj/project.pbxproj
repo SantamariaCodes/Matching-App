@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F5F3D982B26438B0017FE01 /* ThemeStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5F3D972B26438B0017FE01 /* ThemeStructure.swift */; };
 		9F9319872B2103D600D97C44 /* CardGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9319862B2103D600D97C44 /* CardGameApp.swift */; };
 		9F9319892B2103D600D97C44 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9319882B2103D600D97C44 /* ContentView.swift */; };
 		9F93198B2B2103D700D97C44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F93198A2B2103D700D97C44 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F5F3D972B26438B0017FE01 /* ThemeStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeStructure.swift; sourceTree = "<group>"; };
 		9F9319832B2103D600D97C44 /* CardGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9319862B2103D600D97C44 /* CardGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameApp.swift; sourceTree = "<group>"; };
 		9F9319882B2103D600D97C44 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				9F9319B12B21042E00D97C44 /* EmojiMemoryGame.swift */,
 				9F9319B32B21049600D97C44 /* MemoryGame.swift */,
 				9F9319862B2103D600D97C44 /* CardGameApp.swift */,
+				9F5F3D972B26438B0017FE01 /* ThemeStructure.swift */,
 				9F9319882B2103D600D97C44 /* ContentView.swift */,
 				9F93198A2B2103D700D97C44 /* Assets.xcassets */,
 				9F93198C2B2103D700D97C44 /* CardGame.entitlements */,
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F5F3D982B26438B0017FE01 /* ThemeStructure.swift in Sources */,
 				9F9319892B2103D600D97C44 /* ContentView.swift in Sources */,
 				9F9319872B2103D600D97C44 /* CardGameApp.swift in Sources */,
 				9F9319B42B21049600D97C44 /* MemoryGame.swift in Sources */,

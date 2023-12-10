@@ -8,38 +8,55 @@
 import SwiftUI
 
 
-
 class EmojiMemoryGame: ObservableObject {
     
-    private static let emojis = ["👻", "🫥", "😈", "👺", "👾", "🤠", "🤖", "👽", "🕷️", "🧙", "🐱", "💀"]
+    @Published private var model: MemoryGame<String>
+    private var currentTheme: Theme
 
-    private static func createMemoryGame() -> MemoryGame<String> {
-        return MemoryGame( numberOfPairsOfCards: 8) { pairIndex  in
-            if emojis.indices.contains(pairIndex) {
-                
-                return emojis[pairIndex]
+    
+    var currentThemeColor : Color {
+        currentTheme.color
+    }
+    
+    var currentThemeName : String {
+        currentTheme.name
+    }
+    
+    
+    
+    init() {
+        currentTheme = themes.randomElement() ?? themes[0]
+        model = EmojiMemoryGame.createMemoryGame(theme: currentTheme)
+    }
 
+    private static func createMemoryGame(theme: Theme) -> MemoryGame<String> {
+        MemoryGame<String>(numberOfPairsOfCards: theme.numberOfPairsOfCards) { pairIndex in
+            if theme.emojis.indices.contains(pairIndex) {
+                return theme.emojis[pairIndex]
             } else {
                 return "⁇"
             }
-            
         }
     }
-    
-    @Published private var model = createMemoryGame()
-    
-    var cards: Array<MemoryGame<String>.Card>{
-        
-        return model.cards
+
+    var cards: Array<MemoryGame<String>.Card> {
+        model.cards
     }
-    
-    //MARK: - Intents
+
+    // MARK: - Intents
     func shuffle() {
         model.shuffle()
     }
-    
+
     func choose(_ card: MemoryGame<String>.Card) {
-        return model.choose(card)
+        model.choose(card)
+    }
+
+    func switchTheme() {
+        currentTheme = themes.randomElement() ?? themes[0]
+        model = EmojiMemoryGame.createMemoryGame(theme: currentTheme)
     }
     
+    
+
 }
